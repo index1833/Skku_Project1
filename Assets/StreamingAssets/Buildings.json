@@ -1,0 +1,14 @@
+{
+      "buildinfo" :[
+      {
+            "filename": "1",
+            "longitude": "127.1062",
+            "latitude" : "37.40482"  
+      },
+      {
+            "filename": "2",
+            "longitude": "127.1093",
+            "latitude" : "37.40482"  
+      }
+]
+}
