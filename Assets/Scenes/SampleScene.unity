@@ -636,12 +636,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _originAuthority: 0
-  _latitude: 36.4036
+  _latitude: 37.4036
   _longitude: 127.1012
   _height: 100
-  _ecefX: -3100350.6166636115
-  _ecefY: 4099219.890466538
-  _ecefZ: 3764389.4824561323
+  _ecefX: -3060152.964910472
+  _ecefY: 4046071.3811557298
+  _ecefZ: 3853131.228952995
   _scale: 1
 --- !u!4 &2138338583
 Transform:

@@ -40,6 +40,8 @@ public class BuildingLoader : MonoBehaviour
         // BuildingList에서 각 BuildingData를 가져와 건물을 생성합니다.
         foreach (BuildingData buildingData in buildingList.buildinfo)
         {
+            // JSON 파일에서 읽은 latitude와 longitude 값을 디버그 로그로 출력합니다.
+            Debug.Log("Latitude: " + buildingData.latitude + ", Longitude: " + buildingData.longitude);
             // Resources 폴더에서 obj 파일을 로드합니다.
             GameObject prefab = Resources.Load<GameObject>(buildingData.filename);
             if (prefab == null)
@@ -58,12 +60,12 @@ public class BuildingLoader : MonoBehaviour
             if (globeAnchor != null)
             {
                 double latitude, longitude;
-
                 if (double.TryParse(buildingData.latitude, out latitude) && double.TryParse(buildingData.longitude, out longitude))
                 {
+                    // Unity 좌표로 변환한 후 CesiumGlobeAnchor에 설정합니다.
+                    Vector3 unityCoordinates = new Vector3((float)longitude, 0f, (float)latitude);
                     double3 double3Position = new double3(longitude, latitude, 0); // 위도와 경도를 설정합니다.
                     globeAnchor.longitudeLatitudeHeight = double3Position;
-                    //globeAnchor.longitudeLatitudeHeight = new Vector3((float)longitude, (float)latitude, 0f); 
                 }
                 else
                 {
@@ -76,4 +78,13 @@ public class BuildingLoader : MonoBehaviour
             }
         }
     }
+    // Unity 좌표를 Cesium 좌표로 변환합니다.
+    private Vector3 UnityToCesiumCoordinates(Vector3 unityCoordinates)
+    {
+        // Unity의 y 좌표를 Cesium의 z 좌표로 사용합니다.
+        return new Vector3(unityCoordinates.x, unityCoordinates.z, unityCoordinates.y);
+    }
 }
+//                    
+
+
