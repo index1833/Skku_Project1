@@ -20,8 +20,8 @@ public class BuildingData
 
 [System.Serializable]
 public class BuildingList
-{
-    public List<BuildingData> buildinfo;
+{   // List<BuildingData>
+    public BuildingData[] buildinfo;
 }
 
 public class BuildingLoader : MonoBehaviour
@@ -53,6 +53,7 @@ public class BuildingLoader : MonoBehaviour
             // 건물을 생성하고 위치를 설정합니다.
             GameObject building = Instantiate(prefab);
             building.transform.SetParent(transform); // 현재 스크립트를 붙인 게임 오브젝트를 부모로 설정합니다.
+            
 
             // 건물의 위치를 설정합니다.
             CesiumGlobeAnchor globeAnchor = building.GetComponent<CesiumGlobeAnchor>();
@@ -63,9 +64,11 @@ public class BuildingLoader : MonoBehaviour
                 if (double.TryParse(buildingData.latitude, out latitude) && double.TryParse(buildingData.longitude, out longitude))
                 {
                     // Unity 좌표로 변환한 후 CesiumGlobeAnchor에 설정합니다.
+                    building.transform.rotation = UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(0,0,0));
                     Vector3 unityCoordinates = new Vector3((float)longitude, 0f, (float)latitude);
                     double3 double3Position = new double3(longitude, latitude, 0); // 위도와 경도를 설정합니다.
                     globeAnchor.longitudeLatitudeHeight = double3Position;
+                   
                 }
                 else
                 {
@@ -85,6 +88,5 @@ public class BuildingLoader : MonoBehaviour
         return new Vector3(unityCoordinates.x, unityCoordinates.z, unityCoordinates.y);
     }
 }
-//                    
 
 
