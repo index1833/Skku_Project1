@@ -30,6 +30,16 @@ public class BuildingLoader : MonoBehaviour
 
     void Start()
     {
+/*        // Renderer 컴포넌트 가지고오기
+        Renderer renderer = GetComponent<Renderer>();
+
+        // BoxCollider 컴포넌트 추가
+        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+
+        // BoxCollider의 크기를 렌더러의 bounds에 맞춘다
+        boxCollider.size = renderer.bounds.size;*/
+
+
         // JSON 파일을 읽어서 문자열로 저장합니다.
         string jsonFilePath = Path.Combine(Application.streamingAssetsPath, "Buildings.json");
         string jsonString = File.ReadAllText(jsonFilePath);
