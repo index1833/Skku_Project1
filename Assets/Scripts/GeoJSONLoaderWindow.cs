@@ -1,5 +1,9 @@
 using UnityEngine;
 using UnityEditor;
+using System.IO;
+using CesiumForUnity;
+using UnityEditor.ShaderGraph.Serialization;
+
 
 
 public class GeoJSONLoaderWindow : EditorWindow
@@ -26,42 +30,64 @@ public class GeoJSONLoaderWindow : EditorWindow
         }
         GUILayout.EndHorizontal();
 
-        if (GUILayout.Button("GeoJSON 로드")) // GeoJSON 로드 버튼
+/*        if (GUILayout.Button("GeoJSON 로드")) // GeoJSON 로드 버튼
         {
             LoadGeoJSON(); // GeoJSON 파일 로드 함수 호출
-        }
+        }*/
     }
 
-    private void LoadGeoJSON()
+/*    private void LoadGeoJSON()
     {
         if (!string.IsNullOrEmpty(filePath)) // 파일 경로가 비어있지 않으면
         {
-            int assetsIndex = filePath.IndexOf("Assets"); // 파일 경로에서 "Assets" 문자열의 인덱스를 찾습니다.
+            geoJSONFile = AssetDatabase.LoadAssetAtPath<TextAsset>(filePath); // GeoJSON 파일 로드
 
-            if (assetsIndex != -1) // "Assets" 문자열을 찾은 경우
+            if (geoJSONFile != null) // 파일이 로드되었으면
             {
-                string assetPath = filePath.Substring(assetsIndex); // 파일 경로에서 "Assets" 문자열 이후의 부분을 추출하여 Asset 경로로 설정
-                geoJSONFile = AssetDatabase.LoadAssetAtPath<TextAsset>(assetPath); // GeoJSON 파일 로드
+                Debug.Log("GeoJSON 로드됨: " + geoJSONFile.text);
 
-                if (geoJSONFile != null) // 파일이 로드되었으면
+                // JSON 문자열을 객체로 파싱
+                JSONObject jsonObject = new JSONObject(geoJSONFile.text);
+
+                // "features" 배열에서 geojson 객체들 추출
+                JSONArray features = jsonObject["features"].list;
+                foreach (JSONObject feature in features)
                 {
-                    Debug.Log("GeoJSON 로드됨: " + geoJSONFile.text);
-                    // 여기서 GeoJSON 파일을 파싱하고 건물을 생성하는 등의 작업을 수행할 수 있습니다.
+                    JSONObject geometry = feature["geometry"];
+                    string type = geometry["type"].str;
+                    if (type == "Polygon" || type == "MultiPolygon")
+                    {
+                        JSONArray coordinates = geometry["coordinates"].list;
+                        foreach (JSONObject polygon in coordinates)
+                        {
+                            JSONArray coords = polygon.list[0].list; // 첫 번째 Polygon 또는 MultiPolygon의 좌표 배열
+                            for (int i = 0; i < coords.Count; i++)
+                            {
+                                // 큐브 생성
+                                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+                                // CesiumGlobeAnchor 스크립트 추가
+                                CesiumGlobeAnchor cesiumGlobeAnchor = cube.AddComponent<CesiumGlobeAnchor>();
+
+                                // 큐브의 위치 설정 (첫 번째 값만 사용)
+                                Vector3 position = new Vector3(coords[i][0].f, coords[i][1].f, coords[i][2].f);
+                                cube.transform.position = position;
+
+                                // 마지막 값을 제외한 좌표값을 CesiumGlobeAnchor 스크립트에 할당
+                                cesiumGlobeAnchor._lastLocalPosition = position;
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    Debug.LogError("GeoJSON 파일 로드 실패."); // 파일 로드 실패 시 오류 메시지 출력
-                }
-            }
-            else
+            }*/
+/*            else
             {
-                Debug.LogError("파일 경로에 'Assets' 문자열을 찾을 수 없습니다."); // "Assets" 문자열을 찾을 수 없는 경우 오류 메시지 출력
+                Debug.LogError("GeoJSON 파일 로드 실패."); // 파일 로드 실패 시 오류 메시지 출력
             }
         }
         else
         {
             Debug.LogError("파일 경로가 비어 있습니다."); // 파일 경로가 비어있을 경우 오류 메시지 출력
         }
-    }
-
+    }*/
 }

@@ -27,6 +27,6 @@ public class ObjectCreator : MonoBehaviour
         CesiumGlobeAnchor cesiumGlobeAnchor = cube.AddComponent<CesiumGlobeAnchor>();
 
         // CesiumGlobeAnchor 스크립트의 SetPositionLongitudeLatitudeHeight 메서드 호출
-        cesiumGlobeAnchor.SetPositionLongitudeLatitudeHeight(37.4078, 127.1029, 300);
+        //cesiumGlobeAnchor.SetPositionLongitudeLatitudeHeight(37.4078f, 127.1029f, 300f);
     }
 }

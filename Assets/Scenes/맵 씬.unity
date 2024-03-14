@@ -500,7 +500,7 @@ MonoBehaviour:
   _url: 
   _ionAssetID: 0
   _ionAccessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkMDE5MzJjMC05ZjQzLTQ2NWMtYjdjMS04YjhhOTk0ZmU5MDkiLCJpZCI6MTk1NjcwLCJpYXQiOjE3MDc5Nzk3Mzd9.IZ385e9BfireqwW0dAIkeSETOfFa3-1ZBc4ECIXRsXE
-  _ionServer: {fileID: 11400000, guid: 5142513da1733324cb319bbe12d8682d, type: 2}
+  _ionServer: {fileID: 11400000, guid: c9ff58adbba980542835f2750e9c606f, type: 2}
   _maximumScreenSpaceError: 16
   _preloadAncestors: 1
   _preloadSiblings: 1
@@ -958,6 +958,51 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1333815831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333815833}
+  - component: {fileID: 1333815832}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1333815832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333815831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4382af8a43fd5ca47892e21d8643383d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFilePath: Assets/terrain.geojsonl.json
+--- !u!4 &1333815833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333815831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 357.69955, y: 5.187584, z: 500.7393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2014090729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1065,7 @@ MonoBehaviour:
   _url: 
   _ionAssetID: 96188
   _ionAccessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkMDE5MzJjMC05ZjQzLTQ2NWMtYjdjMS04YjhhOTk0ZmU5MDkiLCJpZCI6MTk1NjcwLCJpYXQiOjE3MDc5Nzk3Mzd9.IZ385e9BfireqwW0dAIkeSETOfFa3-1ZBc4ECIXRsXE
-  _ionServer: {fileID: 11400000, guid: 5142513da1733324cb319bbe12d8682d, type: 2}
+  _ionServer: {fileID: 11400000, guid: c9ff58adbba980542835f2750e9c606f, type: 2}
   _maximumScreenSpaceError: 16
   _preloadAncestors: 1
   _preloadSiblings: 1
@@ -1096,7 +1141,7 @@ MonoBehaviour:
   _subTileCacheBytes: 16777216
   _ionAssetID: 3
   _ionAccessToken: 
-  _ionServer: {fileID: 11400000, guid: 5142513da1733324cb319bbe12d8682d, type: 2}
+  _ionServer: {fileID: 11400000, guid: c9ff58adbba980542835f2750e9c606f, type: 2}
 --- !u!114 &2132419436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1159,7 @@ MonoBehaviour:
   _url: 
   _ionAssetID: 1
   _ionAccessToken: 
-  _ionServer: {fileID: 11400000, guid: 5142513da1733324cb319bbe12d8682d, type: 2}
+  _ionServer: {fileID: 11400000, guid: c9ff58adbba980542835f2750e9c606f, type: 2}
   _maximumScreenSpaceError: 16
   _preloadAncestors: 1
   _preloadSiblings: 1
@@ -1145,3 +1190,4 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 1054266107}
+  - {fileID: 1333815833}
